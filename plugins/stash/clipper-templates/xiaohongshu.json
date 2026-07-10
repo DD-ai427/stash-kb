@@ -1,0 +1,21 @@
+{
+  "id": "stash-xiaohongshu",
+  "name": "Stash — 小红书",
+  "behavior": "create",
+  "noteNameFormat": "{{date:YYYY-MM-DD}}-{{title}}",
+  "path": "inbox",
+  "noteContentFormat": "{{selector:#detail-desc}}\n\n{{selector:.swiper-wrapper img}}\n\n## 评论\n\n{{selector:.comments-el}}",
+  "context": "",
+  "properties": [
+    { "id": "stash-xhs-title", "name": "title", "value": "{{title}}" },
+    { "id": "stash-xhs-source", "name": "source", "value": "{{url}}" },
+    { "id": "stash-xhs-platform", "name": "platform", "value": "xiaohongshu" },
+    { "id": "stash-xhs-clipped", "name": "clipped_at", "value": "{{date}}" },
+    { "id": "stash-xhs-status", "name": "status", "value": "unprocessed" },
+    { "id": "stash-xhs-tags", "name": "tags", "value": "" }
+  ],
+  "triggers": [
+    "xiaohongshu.com",
+    "xhslink.com"
+  ]
+}

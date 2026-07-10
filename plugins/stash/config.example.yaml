@@ -1,0 +1,66 @@
+# Stash — Knowledge Base Configuration
+# Copy this file to your vault root as config.yaml and customize.
+
+vault_path: ~/my-vault
+
+paths:
+  inbox: inbox/
+  wiki: wiki/
+  output: output/
+  archive: archive/
+
+categories:
+  ai-tech:
+    display: "AI & Technology"
+    keywords: [AI, LLM, GPT, Claude, 大模型, prompt, agent, transformer, 人工智能, machine learning, deep learning]
+    folder: "01-AI-Tech"
+
+  lifestyle:
+    display: "生活方式"
+    keywords: [美食, 咖啡, 探店, hiking, 遛娃, 收纳, 穿搭, 装修, 家居, recipe, cooking]
+    folder: "02-Lifestyle"
+
+  finance:
+    display: "投资理财"
+    keywords: [投资, 理财, 股票, crypto, ETF, 基金, 买房, 税务, 保险, portfolio, retirement]
+    folder: "03-Finance"
+
+  travel:
+    display: "旅行攻略"
+    keywords: [旅行, 攻略, 自驾, 民宿, 签证, 机票, 酒店, 景点, 路线, travel, itinerary]
+    folder: "04-Travel"
+
+  career:
+    display: "职业发展"
+    keywords: [求职, 面试, 跳槽, 薪资, 晋升, 副业, 远程, freelance, resume, interview]
+    folder: "05-Career"
+
+  health:
+    display: "健康养生"
+    keywords: [健身, 减脂, 饮食, 睡眠, 心理, 冥想, workout, nutrition, mental health]
+    folder: "06-Health"
+
+  indie-dev:
+    display: "独立开发"
+    keywords: [独立开发, indie, 出海, SaaS, side project, build in public, 变现, 产品]
+    folder: "07-Indie-Dev"
+
+  parenting:
+    display: "育儿教育"
+    keywords: [育儿, 教育, 幼儿园, 小学, 英语启蒙, 绘本, 兴趣班, 升学]
+    folder: "08-Parenting"
+
+classification:
+  # keyword = fast keyword scoring against the lists above (default, zero cost)
+  # llm     = a Claude Code subagent judges the category (smarter for ambiguous content)
+  # hybrid  = keyword first, LLM only as a tiebreaker on low-confidence matches
+  # Note: llm/hybrid need NO API key — Stash runs inside Claude Code and uses a subagent.
+  method: keyword
+  fallback_category: misc
+
+obsidian:
+  wikilinks: true
+  frontmatter: true
+
+output:
+  default_format: markdown

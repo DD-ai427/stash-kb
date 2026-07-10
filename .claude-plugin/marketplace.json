@@ -1,0 +1,20 @@
+{
+  "name": "stash-kb",
+  "owner": {
+    "name": "DD-ai427"
+  },
+  "metadata": {
+    "description": "Turn your bookmarks into a searchable knowledge base — clip any webpage, auto-classify, compile into an Obsidian wiki, query and generate outputs."
+  },
+  "plugins": [
+    {
+      "name": "stash",
+      "source": "./plugins/stash",
+      "description": "Ingest clipped web content into a personal knowledge base: classify, compile into a linked Obsidian wiki, query, and keep it healthy.",
+      "version": "0.1.0",
+      "author": {
+        "name": "DD-ai427"
+      }
+    }
+  ]
+}

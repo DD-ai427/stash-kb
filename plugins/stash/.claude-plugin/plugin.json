@@ -1,0 +1,12 @@
+{
+  "name": "stash",
+  "version": "0.1.0",
+  "description": "Turn your bookmarks into a searchable knowledge base. Clip any webpage → AI auto-classifies → compiles into an Obsidian wiki → query and generate outputs.",
+  "author": {
+    "name": "DD-ai427"
+  },
+  "homepage": "https://github.com/DD-ai427/stash-kb",
+  "repository": "https://github.com/DD-ai427/stash-kb",
+  "license": "MIT",
+  "keywords": ["knowledge-base", "obsidian", "bookmarks", "web-clipper", "wiki", "llm", "xiaohongshu", "stash"]
+}

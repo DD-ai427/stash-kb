@@ -1,0 +1,19 @@
+{
+  "id": "stash-default",
+  "name": "Stash — Default",
+  "behavior": "create",
+  "noteNameFormat": "{{date:YYYY-MM-DD}}-{{title}}",
+  "path": "inbox",
+  "noteContentFormat": "{{content}}",
+  "context": "",
+  "properties": [
+    { "id": "stash-default-title", "name": "title", "value": "{{title}}" },
+    { "id": "stash-default-source", "name": "source", "value": "{{url}}" },
+    { "id": "stash-default-author", "name": "author", "value": "{{author}}" },
+    { "id": "stash-default-platform", "name": "platform", "value": "web" },
+    { "id": "stash-default-clipped", "name": "clipped_at", "value": "{{date}}" },
+    { "id": "stash-default-status", "name": "status", "value": "unprocessed" },
+    { "id": "stash-default-tags", "name": "tags", "value": "" }
+  ],
+  "triggers": []
+}
