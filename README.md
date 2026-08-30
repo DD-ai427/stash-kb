@@ -161,6 +161,10 @@ classification:
 
 Alternatively, before clicking Clip, scroll the comments to the bottom and expand all replies so they render first — but this is less reliable on sites that virtualize the list.
 
+**Images on 小红书.** Post images are the hardest thing to clip cleanly, for three compounding reasons: (1) they live in a lazy-loaded carousel where only the visible slide has a real `src` (the rest are `data-src` placeholders); (2) the CDN (`xhscdn.com`) enforces Referer/anti-hotlink checks, so even a captured `![](url)` may fail to render (403) in Obsidian later; (3) template selectors for the carousel break whenever Xiaohongshu changes its markup. The bundled 小红书 template grabs the **cover image** reliably (via the page's `og:image`) and makes a best-effort pass at the carousel, but for image-heavy posts the reliable path is to **save the images manually** — right-click-save or screenshot into your vault's attachment folder and embed with `![[image.png]]` (local images sidestep the anti-hotlink problem entirely). The `obsidian-local-images-plus` plugin (offered by `setup.sh`) can also localize captured remote images, when their URLs survive.
+
+> The 小红书 template's selectors (`.swiper-wrapper`, `#detail-desc`, `.comments-el`) are best-effort defaults and may drift as Xiaohongshu changes its DOM. If clips come through thin, inspect the live page and update the selectors in `plugins/stash/clipper-templates/xiaohongshu.json`.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).

@@ -4,7 +4,7 @@
   "behavior": "create",
   "noteNameFormat": "{{date:YYYY-MM-DD}}-{{title}}",
   "path": "inbox",
-  "noteContentFormat": "{{selector:#detail-desc}}\n\n{{selector:.swiper-wrapper img}}\n\n## 评论\n\n{{selector:.comments-el}}",
+  "noteContentFormat": "![]({{image}})\n\n{{selectorHtml:.swiper-wrapper}}\n\n{{selector:#detail-desc}}\n\n## 评论\n\n{{selector:.comments-el}}",
   "context": "",
   "properties": [
     { "id": "stash-xhs-title", "name": "title", "value": "{{title}}" },

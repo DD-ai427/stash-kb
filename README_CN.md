@@ -161,6 +161,10 @@ classification:
 
 或者：点 clip 之前先滚到评论底部、展开所有回复让它们先渲染出来——但对用虚拟列表的站点不保险。
 
+**小红书的图片。** 帖子图片是最难干净抓下来的，三重原因叠加：(1) 图片在懒加载轮播里，只有当前那张有真实 `src`，其余是 `data-src` 占位；(2) 图床（`xhscdn.com`）有 Referer 防盗链，就算 clip 到了 `![](url)`，在 Obsidian 里也可能 403 加载不出来；(3) 轮播的选择器会随小红书改版而失效。自带的小红书模板能**稳定拿到封面图**（走页面的 `og:image`），并对轮播做尽力抓取，但图片多的帖子，**可靠做法是手动存图**——右键存图或截图丢进 vault 的附件文件夹，用 `![[图片.png]]` 嵌入（本地图彻底绕开防盗链）。`setup.sh` 提供的 `obsidian-local-images-plus` 插件也能把 clip 到的远程图本地化，前提是 URL 没失效。
+
+> 小红书模板里的选择器（`.swiper-wrapper`、`#detail-desc`、`.comments-el`）是尽力而为的默认值，会随小红书改 DOM 而漂移。如果 clip 下来内容很单薄，就打开真实页面看一下，更新 `plugins/stash/clipper-templates/xiaohongshu.json` 里的选择器。
+
 ## 许可
 
 MIT —— 见 [LICENSE](LICENSE)。
