@@ -187,11 +187,20 @@ Capture is a convenience path for content the user already has as **text**. Stas
 
 Don't fetch it. Instead, tell them to clip it:
 
-> Stash doesn't fetch web pages — that's what the Obsidian Web Clipper is for. Open the page in your browser, hit the Clipper (it's already logged in, so it gets the full content, images, and comments), and it lands in your `inbox/`. Then run `stash process`.
+> Stash doesn't fetch web pages — that's what the Obsidian Web Clipper is for. Open the page in your browser, hit the Clipper (it's already logged in, so it gets the full post content and images), and it lands in your `inbox/`. Then run `stash process`.
 >
 > If you'd rather, paste the **text** of the page here and I'll stash it directly.
 
 This applies to every site, including login-walled ones (小红书, x.com/twitter.com, WeChat) where fetching would fail or return truncated content anyway.
+
+### Comment-heavy posts (known Clipper limitation)
+
+The Web Clipper snapshots the DOM at click time. On lazy-loading sites (小红书 especially), comments load on scroll, nested replies hide behind "展开更多回复", and the list is often virtualized — so a clip reliably gets the post and top-level comments but **usually misses deeper/nested replies**. No template change fixes this; the content isn't in the page yet.
+
+So:
+- When a user says the comments came through incomplete, don't try to fix the template or fetch the page — explain the lazy-load cause and route them to paste-text.
+- When the **value of a post is in its comments** (discussion threads, Q&A, crowd opinions), recommend the paste path up front: have them expand the replies they want on the page, select + copy, then `stash this` and paste. That captures 100% of what they selected.
+- Content pasted this way is stashed exactly like any other clip (classify → compile → archive).
 
 ---
 

@@ -149,6 +149,18 @@ classification:
 - **Obsidian-native.** `[[wikilinks]]`, YAML frontmatter, `![[embeds]]`. Your vault stays a plain folder of Markdown — no lock-in.
 - **Bilingual.** Works with Chinese and English content out of the box.
 
+## Known limitations
+
+**Comment completeness on lazy-loaded sites (小红书 / Xiaohongshu, etc.).** The Web Clipper captures the page's DOM *at the moment you click*. Sites like Xiaohongshu load comments lazily, hide nested replies behind "展开更多回复" (show more replies), and often *virtualize* the list — comments scrolled off-screen are dropped from the DOM. So a clip reliably captures the post and top-level comments, but usually **misses deeper/nested replies**. This is **not fixable by the Clipper template** — the missing content simply isn't on the page yet, and no CSS selector can conjure it.
+
+**When the comments are the point, paste them instead.** For discussion-heavy posts where the value lives in the replies:
+
+1. On the page, scroll the comment section and click every "展开更多回复" to expand the threads you want
+2. Select the comments → copy
+3. In Claude Code: `stash this` and paste — Stash ingests 100% of what you selected, nothing dropped
+
+Alternatively, before clicking Clip, scroll the comments to the bottom and expand all replies so they render first — but this is less reliable on sites that virtualize the list.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
