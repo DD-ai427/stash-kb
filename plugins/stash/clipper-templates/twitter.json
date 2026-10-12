@@ -1,0 +1,50 @@
+{
+  "id": "stash-twitter",
+  "name": "Stash — Twitter/X",
+  "behavior": "create",
+  "noteNameFormat": "{{date|date:\"YYYY-MM-DD\"}}-{{title}}",
+  "path": "inbox",
+  "noteContentFormat": "{{selectorHtml:article[data-testid=\"tweet\"]}}",
+  "context": "",
+  "properties": [
+    {
+      "id": "stash-tw-title",
+      "name": "title",
+      "value": "{{title}}"
+    },
+    {
+      "id": "stash-tw-source",
+      "name": "source",
+      "value": "{{url}}"
+    },
+    {
+      "id": "stash-tw-platform",
+      "name": "platform",
+      "value": "twitter"
+    },
+    {
+      "id": "stash-tw-author",
+      "name": "author",
+      "value": "{{selector:div[data-testid=\"User-Name\"]}}"
+    },
+    {
+      "id": "stash-tw-clipped",
+      "name": "clipped_at",
+      "value": "{{date|date:\"YYYY-MM-DD HH:mm\"}}"
+    },
+    {
+      "id": "stash-tw-status",
+      "name": "status",
+      "value": "unprocessed"
+    },
+    {
+      "id": "stash-tw-tags",
+      "name": "tags",
+      "value": ""
+    }
+  ],
+  "triggers": [
+    "x.com/",
+    "twitter.com/"
+  ]
+}
