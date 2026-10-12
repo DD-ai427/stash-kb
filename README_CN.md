@@ -70,6 +70,7 @@ stash init
 3. 导入 [`plugins/stash/clipper-templates/`](plugins/stash/clipper-templates/) 里的模板——把 JSON 拖进 Clipper 的 **设置 → 模板**：
    - **Stash — Default** —— 任意网页（Readability 提取）
    - **Stash — 小红书** —— 小红书专用选择器（正文 + 图片 + 评论），命中 `xiaohongshu.com` 自动切换
+   - **Stash — Twitter/X** —— 用 `[data-testid]` 选择器抓主推 + 已加载的回复，命中 `x.com` / `twitter.com` 自动切换
 
    两个都写入 `inbox/`，带上 Stash 需要的 frontmatter（`source`、`clipped_at`、`status: unprocessed`）。
 
@@ -164,6 +165,8 @@ classification:
 **小红书的图片。** 帖子图片是最难干净抓下来的，三重原因叠加：(1) 图片在懒加载轮播里，只有当前那张有真实 `src`，其余是 `data-src` 占位；(2) 图床（`xhscdn.com`）有 Referer 防盗链，就算 clip 到了 `![](url)`，在 Obsidian 里也可能 403 加载不出来；(3) 轮播的选择器会随小红书改版而失效。自带的小红书模板能**稳定拿到封面图**（走页面的 `og:image`），并对轮播做尽力抓取，但图片多的帖子，**可靠做法是手动存图**——右键存图或截图丢进 vault 的附件文件夹，用 `![[图片.png]]` 嵌入（本地图彻底绕开防盗链）。`setup.sh` 提供的 `obsidian-local-images-plus` 插件也能把 clip 到的远程图本地化，前提是 URL 没失效。
 
 > 小红书模板里的选择器（`.swiper-wrapper`、`#detail-desc`、`.comments-el`）是尽力而为的默认值，会随小红书改 DOM 而漂移。如果 clip 下来内容很单薄，就打开真实页面看一下，更新 `plugins/stash/clipper-templates/xiaohongshu.json` 里的选择器。
+
+**Twitter/X。** 模板抓页面上所有 `article[data-testid="tweet"]`——单条推文干净利落，thread/详情页则连主推带回复一起下来，每条都带作者名。两个注意点：(1) 回复和小红书评论一样是懒加载+虚拟化——只有你滚过、点开过（"Show more replies"）的才在 DOM 里，所以 clip 前先把想要的回复滚出来；(2) 抓取会夹带点赞/转发数、时间戳、按钮文字等 UI 噪音——`stash process` 编译时会清理掉。图片走 `pbs.twimg.com`，不防盗链，在 Obsidian 里一般正常显示。`[data-testid]` 选择器比小红书的混淆 class 稳得多，但 X 大改版仍可能失效——届时更新 `plugins/stash/clipper-templates/twitter.json`。
 
 ## 许可
 

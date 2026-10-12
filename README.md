@@ -70,6 +70,7 @@ This scaffolds `inbox/ wiki/ output/ archive/`, generates `config.yaml` from you
 3. Import the templates from [`plugins/stash/clipper-templates/`](plugins/stash/clipper-templates/) — drag the JSON into Clipper's **Settings → Templates**:
    - **Stash — Default** — any webpage (Readability extraction)
    - **Stash — 小红书** — tuned selectors for Xiaohongshu (body + images + comments), auto-triggers on `xiaohongshu.com`
+   - **Stash — Twitter/X** — captures the main tweet plus loaded replies via `[data-testid]` selectors, auto-triggers on `x.com` / `twitter.com`
 
    Both write to `inbox/` with the frontmatter Stash needs (`source`, `clipped_at`, `status: unprocessed`).
 
@@ -164,6 +165,8 @@ Alternatively, before clicking Clip, scroll the comments to the bottom and expan
 **Images on 小红书.** Post images are the hardest thing to clip cleanly, for three compounding reasons: (1) they live in a lazy-loaded carousel where only the visible slide has a real `src` (the rest are `data-src` placeholders); (2) the CDN (`xhscdn.com`) enforces Referer/anti-hotlink checks, so even a captured `![](url)` may fail to render (403) in Obsidian later; (3) template selectors for the carousel break whenever Xiaohongshu changes its markup. The bundled 小红书 template grabs the **cover image** reliably (via the page's `og:image`) and makes a best-effort pass at the carousel, but for image-heavy posts the reliable path is to **save the images manually** — right-click-save or screenshot into your vault's attachment folder and embed with `![[image.png]]` (local images sidestep the anti-hotlink problem entirely). The `obsidian-local-images-plus` plugin (offered by `setup.sh`) can also localize captured remote images, when their URLs survive.
 
 > The 小红书 template's selectors (`.swiper-wrapper`, `#detail-desc`, `.comments-el`) are best-effort defaults and may drift as Xiaohongshu changes its DOM. If clips come through thin, inspect the live page and update the selectors in `plugins/stash/clipper-templates/xiaohongshu.json`.
+
+**Twitter/X.** The template grabs every `article[data-testid="tweet"]` on the page — so a single tweet comes through clean, and a thread/detail page brings the main tweet plus its replies, each with author attribution. Two caveats: (1) replies are lazy-loaded and virtualized just like Xiaohongshu comments — only what you've scrolled past and expanded ("Show more replies") is in the DOM at clip time, so scroll the replies you want into view first; (2) the capture includes engagement UI (like/repost counts, timestamps, button labels) as noise — `stash process` strips it during compile. Images (`pbs.twimg.com`) are not Referer-protected, so they generally render fine in Obsidian. The `[data-testid]` selectors are far more stable than Xiaohongshu's obfuscated class names, but can still change — update `plugins/stash/clipper-templates/twitter.json` if a future X redesign breaks them.
 
 ## License
 
