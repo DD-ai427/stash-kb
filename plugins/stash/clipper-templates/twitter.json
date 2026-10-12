@@ -4,7 +4,7 @@
   "behavior": "create",
   "noteNameFormat": "{{date|date:\"YYYY-MM-DD\"}}-{{title}}",
   "path": "inbox",
-  "noteContentFormat": "{{selectorHtml:article[data-testid=\"tweet\"]}}",
+  "noteContentFormat": "{{selector:article[data-testid=\"tweet\"]}}",
   "context": "",
   "properties": [
     {
@@ -25,7 +25,7 @@
     {
       "id": "stash-tw-author",
       "name": "author",
-      "value": "{{selector:div[data-testid=\"User-Name\"]}}"
+      "value": ""
     },
     {
       "id": "stash-tw-clipped",
