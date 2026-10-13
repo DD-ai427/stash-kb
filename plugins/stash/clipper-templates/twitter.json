@@ -4,7 +4,7 @@
   "behavior": "create",
   "noteNameFormat": "{{date|date:\"YYYY-MM-DD HHmm\"}}-{{title}}",
   "path": "inbox",
-  "noteContentFormat": "{{selector:article[data-testid=\"tweet\"]}}\n\n## 图片\n\n{{selectorHtml:article[data-testid=\"tweet\"] div[data-testid=\"tweetPhoto\"] img}}",
+  "noteContentFormat": "{{selector:article[data-testid=\"tweet\"]|join:\"\\n\\n---\\n\\n\"}}\n\n## 图片\n\n{{selector:div[data-testid=\"tweetPhoto\"] img?src|image|join:\"\\n\\n\"}}",
   "context": "",
   "properties": [
     {
