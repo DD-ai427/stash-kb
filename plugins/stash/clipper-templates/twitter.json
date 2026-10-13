@@ -2,9 +2,9 @@
   "id": "stash-twitter",
   "name": "Stash — Twitter/X",
   "behavior": "create",
-  "noteNameFormat": "{{date|date:\"YYYY-MM-DD\"}}-{{title}}",
+  "noteNameFormat": "{{date|date:\"YYYY-MM-DD HHmm\"}}-{{title}}",
   "path": "inbox",
-  "noteContentFormat": "{{selector:article[data-testid=\"tweet\"]}}",
+  "noteContentFormat": "{{selector:article[data-testid=\"tweet\"]}}\n\n## 图片\n\n{{selectorHtml:article[data-testid=\"tweet\"] div[data-testid=\"tweetPhoto\"] img}}",
   "context": "",
   "properties": [
     {
